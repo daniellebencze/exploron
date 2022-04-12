@@ -10,15 +10,17 @@ function PostContainer({ destinations }) {
       .then((r) => r.json())
       .then(setPosts);
   }, []);
-
+  
+  console.log(posts);
+  
   return (
     <div>
       <PostForm destinations={destinations} />
-      {/* <ul className="post-cards">
+      <ul className="post-cards">
         {posts.map((post) => (
           <PostCards key={post.id} post={post} posts={posts} />
         ))}
-      </ul> */}
+      </ul>
     </div>
   );
 }

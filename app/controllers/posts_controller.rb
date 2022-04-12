@@ -3,7 +3,7 @@ class PostsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_invalid
 
     def index
-        posts = Posts.all
+        posts = Post.all
         render json: posts
     end
 
