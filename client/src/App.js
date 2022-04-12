@@ -45,7 +45,10 @@ function App() {
       <>
         {user ? (
           <Routes>
-            <Route path="/" element={<Homepage />} />
+            <Route
+              path="/"
+              element={<Homepage user={user} setUser={setUser} />}
+            />
             <Route
               path="/destinations"
               element={<DestinationContainer destinations={destinations} />}
@@ -58,7 +61,10 @@ function App() {
           </Routes>
         ) : (
           <Routes>
-            <Route path="/signup" element={<SignUp />} />
+            <Route
+              path="/signup"
+              element={<SignUp user={user} setUser={setUser} />}
+            />
             <Route path="/login" element={<Login setUser={setUser} />} />
           </Routes>
         )}
