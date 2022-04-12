@@ -74,7 +74,7 @@ Destination.create([
         "state": "California",
         "description": "Yosemite National Park lies in the heart of California. With its 'hanging' valleys, many waterfalls, cirque lakes, polished domes, moraines and U-shaped valleys, it provides an excellent overview of all kinds of granite relief fashioned by glaciation."
     }, {
-        "name": "JJedediah Smith Redwoods State Park",
+        "name": "Jedediah Smith Redwoods State Park",
         "photograph": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVSq33sOc1RvxCJVrudFJpapMPiqU1hUQ_kw&usqp=CAU",
         "state": "California",
         "description": "Jedediah Smith Redwoods State Park is the last in a long string of redwood parks that stretch up Northern California's coast. A few miles inland from the ocean, the park is densely forested with huge ancient trees. In fact, it contains seven percent of all the old-growth redwoods left in the world."
@@ -115,10 +115,10 @@ Destination.create([
 Post.create([
     {
     "title": "Yosemite Trip",
-    "photograph": ["https://scontent-sea1-1.xx.fbcdn.net/v/t39.30808-6/277995988_10209690980868931_1427287976911088004_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=0debeb&_nc_ohc=__gt8-TtxpUAX-MYUzT&tn=B6cWDPjtqpID9Euf&_nc_ht=scontent-sea1-1.xx&oh=00_AT-0_RNYSJQ9m6T792mjBoezejRbzIB2RFi0xL8lQPv--A&oe=6252202B", "https://scontent-sea1-1.xx.fbcdn.net/v/t39.30808-6/277801517_10209690979988909_4181329890951983214_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=0debeb&_nc_ohc=Z3X114y8DnQAX9yWV4w&_nc_oc=AQnIfiUvau4UqjB_yZhjup_cIL2HhcOGwgroofxY-6pqH6ElJyJojGGFew8UzBjwgh8&tn=B6cWDPjtqpID9Euf&_nc_ht=scontent-sea1-1.xx&oh=00_AT8_kefgl2t0n-8gdfOsznHI6vJgJ0oohzeNvQPq_0g6OA&oe=625347E4"],
+    "photograph": "https://scontent-sea1-1.xx.fbcdn.net/v/t39.30808-6/277801517_10209690979988909_4181329890951983214_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=0debeb&_nc_ohc=Z3X114y8DnQAX9yWV4w&_nc_oc=AQnIfiUvau4UqjB_yZhjup_cIL2HhcOGwgroofxY-6pqH6ElJyJojGGFew8UzBjwgh8&tn=B6cWDPjtqpID9Euf&_nc_ht=scontent-sea1-1.xx&oh=00_AT8_kefgl2t0n-8gdfOsznHI6vJgJ0oohzeNvQPq_0g6OA&oe=625347E4",
     "blurb": "Had so much fun playing (and head-standing) in the snow in Yosemite National Park.", 
     "destination_id": Destination.all.sample.id,
-    # "user_id": User.all.sample.id
+    "user_id": User.all.sample.id
     }, {
     "title": "Grand Canyon",
     "photograph": "https://scontent-sea1-1.xx.fbcdn.net/v/t39.30808-6/278042696_10209690979108887_5656466441476782989_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=0debeb&_nc_ohc=IS4vUt9czSEAX9kq0CZ&_nc_ht=scontent-sea1-1.xx&oh=00_AT8zEEKyt3ftd7ZiC6zCGCkihh3F_kdeCi_BcdMMTMw-3g&oe=62533475",

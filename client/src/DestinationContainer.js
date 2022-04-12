@@ -4,7 +4,6 @@ import DestinationCard from "./DestinationCard";
 function DestinationContainer({ destinations }) {
   return (
     <div>
-      Destinations
       <ul className="cards-container">
         {destinations.map((destination) => (
           <DestinationCard

@@ -1,18 +1,13 @@
 import React, { useState } from "react";
 
-function LoginScreen({ onLogin }) {
+function SignUp({ setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
 
-  // function LoginScreen() {
-  //   function handleLogin() {
-  //     console.log("login form submitted");
-  //   }
-
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/login", {
+    fetch("/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,19 +17,23 @@ function LoginScreen({ onLogin }) {
         password,
         password_confirmation: passwordConfirmation,
       }),
-    })
-      .then((r) => r.json())
-      .then(onLogin);
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
   }
 
   return (
     <div className="login-page">
       <form onSubmit={handleSubmit} className="login-form">
+        <h1>Sign Up</h1>
         <label htmlFor="username">Username:</label>
         <input
           className="form-item"
           type="text"
           id="username"
+          autoComplete="off"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -46,15 +45,17 @@ function LoginScreen({ onLogin }) {
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          autoComplete="current-password"
         />
         <br />
-        <label htmlFor="password_confirmation">Confirm Password:</label>
+        <label htmlFor="password">Confirm Password:</label>
         <input
           className="form-item"
           type="password"
           id="password_confirmation"
           value={passwordConfirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
+          autoComplete="current-password"
         />
         <br />
         <button type="submit" className="login-button">
@@ -65,4 +66,4 @@ function LoginScreen({ onLogin }) {
   );
 }
 
-export default LoginScreen;
+export default SignUp;
