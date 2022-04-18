@@ -9,10 +9,13 @@ import PostContainer from "./PostContainer";
 import JournalContainer from "./JournalContainer";
 import SignUp from "./SignUp";
 import Login from "./Login";
+import UserProfile from "./UserProfile";
 
 function App() {
   const [destinations, setDestinations] = useState([]);
   const [user, setUser] = useState(null);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     // auto-login
@@ -37,7 +40,7 @@ function App() {
         <span className="header-description">
           A localized app to gain travel inspo, post memories to your digital
           photo album, and journal ideas for future trips and upcoming
-          iteneraries.
+          itineraries.
         </span>
       </div>
       <NavBar user={user} setUser={setUser} />
@@ -45,27 +48,56 @@ function App() {
       <>
         {user ? (
           <Routes>
-            <Route
-              path="/"
-              element={<Homepage user={user} setUser={setUser} />}
-            />
+            <Route exact path="/" element={<Homepage user={user} />} />
             <Route
               path="/destinations"
               element={<DestinationContainer destinations={destinations} />}
             />
             <Route
               path="/posts"
-              element={<PostContainer destinations={destinations} />}
+              element={
+                <PostContainer user={user} destinations={destinations} />
+              }
             />
             <Route path="/journal" element={<JournalContainer />} />
+            <Route
+              path="/me"
+              element={
+                <UserProfile
+                  user={user}
+                  setUser={setUser}
+                  username={username}
+                  setUsername={setUsername}
+                />
+              }
+            />
           </Routes>
         ) : (
           <Routes>
             <Route
               path="/signup"
-              element={<SignUp user={user} setUser={setUser} />}
+              element={
+                <SignUp
+                  setUser={setUser}
+                  username={username}
+                  setUsername={setUsername}
+                  password={password}
+                  setPassword={setPassword}
+                />
+              }
             />
-            <Route path="/login" element={<Login setUser={setUser} />} />
+            <Route
+              path="/login"
+              element={
+                <Login
+                  setUser={setUser}
+                  username={username}
+                  setUsername={setUsername}
+                  password={password}
+                  setPassword={setPassword}
+                />
+              }
+            />
           </Routes>
         )}
       </>

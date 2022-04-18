@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Login({ setUser }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
+function Login({ setUser, username, setUsername, password, setPassword }) {
   function handleSubmit(e) {
-    // e.preventDefault();
+    e.preventDefault();
     fetch("/login", {
       method: "POST",
       headers: {
@@ -22,7 +19,6 @@ function Login({ setUser }) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
         <label htmlFor="username">Username</label>
         <input
           type="text"
