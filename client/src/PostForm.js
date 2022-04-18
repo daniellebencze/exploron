@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function PostForm({ destinations }) {
+function PostForm({ user, destinations }) {
   const [title, setTitle] = useState("");
   const [blurb, setBlurb] = useState("");
   const [photograph, setPhotograph] = useState("");
@@ -13,6 +13,7 @@ function PostForm({ destinations }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        user_id: user.id,
         destination_id: id,
         title: title,
         blurb: blurb,
@@ -40,7 +41,7 @@ function PostForm({ destinations }) {
           type="img"
           name="photograph"
           placeholder="Add a photo"
-          value={title}
+          value={photograph}
         />
         <br />
         <input
@@ -56,7 +57,7 @@ function PostForm({ destinations }) {
           type="text"
           name="blurb"
           placeholder="Add a caption"
-          value={title}
+          value={blurb}
         />
         <br />
         <button>Submit New Post</button>

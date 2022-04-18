@@ -6,18 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create([
+User.create!([
   {
-    "username": "AdventureGurl",
-    "password_digest": "123"
-  },
-  {
-    "username": "HikerBoi",
-    "password_digest": "123"
+    "username": "dani",
+    "password": "123"
+    "bio": 
   }
 ])
 
-Destination.create([
+Destination.create!([
     {
         "name": "Grand Canyon", 
         "photograph": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqu1KSFjQhh_ofo_oucW1MB4QocqB-KxhP1g&usqp=CAU",
@@ -112,17 +109,17 @@ Destination.create([
 ])
 
 
-Post.create([
+Post.create!([
     {
     "title": "Yosemite Trip",
-    "photograph": "https://scontent-sea1-1.xx.fbcdn.net/v/t39.30808-6/277801517_10209690979988909_4181329890951983214_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=0debeb&_nc_ohc=Z3X114y8DnQAX9yWV4w&_nc_oc=AQnIfiUvau4UqjB_yZhjup_cIL2HhcOGwgroofxY-6pqH6ElJyJojGGFew8UzBjwgh8&tn=B6cWDPjtqpID9Euf&_nc_ht=scontent-sea1-1.xx&oh=00_AT8_kefgl2t0n-8gdfOsznHI6vJgJ0oohzeNvQPq_0g6OA&oe=625347E4",
+    "photograph": "https://scontent.feat1-1.fna.fbcdn.net/v/t39.30808-6/277801517_10209690979988909_4181329890951983214_n.jpg?stp=dst-jpg_s851x315&_nc_cat=102&ccb=1-5&_nc_sid=da31f3&_nc_ohc=0a2u45pPx80AX8ibuyl&_nc_oc=AQlZIfnuVh5oKubWy4E0wmjDyw7oWOOgmz4xIaedDElTNY83HHolbHR78KFj-gx-G40&tn=B6cWDPjtqpID9Euf&_nc_ht=scontent.feat1-1.fna&oh=00_AT-OcndSEuBF1HtpWq_TpKBHVIUmoSPBKDPSLGTffA7HBQ&oe=626319E4",
     "blurb": "Had so much fun playing (and head-standing) in the snow in Yosemite National Park.", 
-    "destination_id": Destination.all.sample.id,
-    "user_id": User.all.sample.id
+    "destination_id": 1,
+    "user_id": 1
     }, {
     "title": "Grand Canyon",
-    "photograph": "https://scontent-sea1-1.xx.fbcdn.net/v/t39.30808-6/278042696_10209690979108887_5656466441476782989_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=0debeb&_nc_ohc=IS4vUt9czSEAX9kq0CZ&_nc_ht=scontent-sea1-1.xx&oh=00_AT8zEEKyt3ftd7ZiC6zCGCkihh3F_kdeCi_BcdMMTMw-3g&oe=62533475",
+    "photograph": "https://scontent.feat1-1.fna.fbcdn.net/v/t39.30808-6/278042696_10209690979108887_5656466441476782989_n.jpg?stp=c28.0.314.313a_dst-jpg_p370x247&_nc_cat=101&ccb=1-5&_nc_sid=da31f3&_nc_ohc=_puJnlXPwosAX87sa9X&_nc_ht=scontent.feat1-1.fna&oh=00_AT8Qg5Yfcc7qA8mlRemNLiiFwivS6WGhb_MN_vDesyRdsw&oe=62630675",
     "blurb": "My first time exploring the Grand Canyon.. in snow boots!",
-    "destination_id": Destination.all.sample.id,
-    "user_id": User.all.sample.id}
+    "destination_id": 2,
+    "user_id": 1}
 ])

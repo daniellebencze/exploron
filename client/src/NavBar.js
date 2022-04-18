@@ -14,23 +14,28 @@ function NavBar({ user, setUser }) {
     <header>
       <br />
       <br />
-      <NavLink className="nav-item" to="/">
-        Home
-      </NavLink>
-      <NavLink className="nav-item" to="/destinations">
-        Destinations
-      </NavLink>
-      <NavLink className="nav-item" to="/posts">
-        Posts
-      </NavLink>
-      <NavLink className="nav-item" to="/journal">
-        Journal
-      </NavLink>
-      <br />
-      <br />
-      <br />
       {user ? (
-        <button onClick={handleLogoutClick}>Logout</button>
+        <>
+          <NavLink className="nav-item" to="/">
+            Home
+          </NavLink>
+          <NavLink className="nav-item" to="/destinations">
+            Destinations
+          </NavLink>
+          <NavLink className="nav-item" to="/posts">
+            Posts
+          </NavLink>
+          <NavLink className="nav-item" to="/journal">
+            Journal
+          </NavLink>
+          <NavLink className="nav-item" to="/me">
+            My Profile
+          </NavLink>
+          <br />
+          <br />
+          <br />
+          <button onClick={handleLogoutClick}>Logout</button>
+        </>
       ) : (
         <>
           <NavLink className="nav-item" to="/signup">
@@ -39,6 +44,7 @@ function NavBar({ user, setUser }) {
           <NavLink className="nav-item" to="/login">
             Login
           </NavLink>
+          <h1>Please Login or Signup</h1>
         </>
       )}
     </header>

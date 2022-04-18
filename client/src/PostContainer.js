@@ -1,24 +1,34 @@
 import React, { useState, useEffect } from "react";
-import PostCards from "./PostCards";
+import PostCard from "./PostCard";
 import PostForm from "./PostForm";
 
-function PostContainer({ destinations }) {
+function PostContainer({ user, destinations }) {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("/posts")
+    fetch("/current_user_post")
       .then((r) => r.json())
-      .then(setPosts);
+      .then((data) => {
+        // console.log(data);
+        setPosts(data);
+      });
   }, []);
-  
-  console.log(posts);
-  
+
+  if (posts.length === 0) {
+    return "Submit your first post!";
+  }
+
   return (
     <div>
-      <PostForm destinations={destinations} />
+      <PostForm user={user} destinations={destinations} />
       <ul className="post-cards">
         {posts.map((post) => (
-          <PostCards key={post.id} post={post} posts={posts} />
+          <PostCard
+            key={post.id}
+            post={post}
+            posts={posts}
+            setPosts={setPosts}
+          />
         ))}
       </ul>
     </div>
