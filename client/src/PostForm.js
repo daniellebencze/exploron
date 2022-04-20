@@ -53,6 +53,7 @@ function PostForm({ user, destinations }) {
           value={title}
         />
         <br />
+
         <input
           onChange={(e) => setBlurb(e.target.value)}
           type="text"
@@ -60,6 +61,7 @@ function PostForm({ user, destinations }) {
           placeholder="Add a caption"
           value={blurb}
         />
+        <br />
         <br />
         <button>Submit New Post</button>
       </form>
