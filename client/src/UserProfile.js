@@ -1,13 +1,48 @@
-import React from "react";
+import React, { useEffect } from "react";
+import ProfileUpdateForm from "./ProfileUpdateForm";
 
-function UserProfile({ user, username }) {
+function UserProfile({
+  user,
+  username,
+  bio,
+  setBio,
+  profilePic,
+  setProfilePic,
+  profile,
+  setProfile,
+  handleProfileUpdate,
+}) {
+  useEffect(() => {
+    setProfilePic(user.profilePic);
+    setBio(user.bio);
+    //  setOther(journal.other);
+  }, [user]);
+
+  console.log(user);
   return (
     <div>
-      <img
-        src="https://scontent.feat1-1.fna.fbcdn.net/v/t1.6435-9/36714985_10204957693059694_4632515441581883392_n.jpg?stp=dst-jpg_p206x206&_nc_cat=110&ccb=1-5&_nc_sid=da31f3&_nc_ohc=J9XX0C5X3DQAX_7tsWR&_nc_ht=scontent.feat1-1.fna&oh=00_AT-2m39s8xFw857jwfTVjUH-czAV-7vZHqqddoPAt5gxhA&oe=627D7212"
-        alt="user.username"
-      />
-      <h4>Username: {user.username}</h4>
+      <span className="profile-form">
+        <ProfileUpdateForm
+          user={user}
+          username={username}
+          bio={bio}
+          setBio={setBio}
+          profilePic={profilePic}
+          setProfilePic={setProfilePic}
+          profile={profile}
+          setProfile={setProfile}
+          handleProfileUpdate={handleProfileUpdate}
+        />
+        {/* <h3>{user.username}</h3> */}
+        <img
+          className="profile-image"
+          src={user.profilePic}
+          alt={user.username}
+        />
+      </span>
+      <span className="profile-bio">
+        <h3>{user.bio}</h3>
+      </span>
     </div>
   );
 }

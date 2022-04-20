@@ -3,5 +3,5 @@ class User < ApplicationRecord
 
     has_many :posts, dependent: :destroy
     has_many :destinations, through: :posts
-
+    has_one :journal
 end
