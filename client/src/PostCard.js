@@ -6,7 +6,6 @@ function PostCard({ post, setPosts }) {
     fetch(`/current_user_post/${post.id}`, {
       method: "DELETE",
     });
-
     setPosts((currentPosts) =>
       currentPosts.filter((newPost) => newPost.id !== post.id)
     );

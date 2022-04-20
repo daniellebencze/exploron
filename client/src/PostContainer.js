@@ -15,11 +15,17 @@ function PostContainer({ user, destinations }) {
   }, []);
 
   if (posts.length === 0) {
-    return "Submit your first post!";
+    return (
+      <div>
+        <h2 className="no-post-alert">Submit your first post!</h2>
+        <div className="new-post-form">
+          <PostForm user={user} destinations={destinations} />
+        </div>
+      </div>
+    );
   }
-
   return (
-    <div>
+    <div className="new-post-form">
       <PostForm user={user} destinations={destinations} />
       <ul className="post-cards">
         {posts.map((post) => (

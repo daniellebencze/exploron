@@ -10,11 +10,23 @@ class UsersController < ApplicationController
   def create
     user = User.create(user_params)
     if user.valid?
+      user.create_journal(wishlist: "", itenerary: "", other: "")
       session[:user_id] = user.id
       render json: user, status: :created
     else
       render json: { error: user.errors.full_messages }, status: :unprocessable_entity
     end
+  end
+
+  def update
+      user = User.where(["user_id = :u", { u: session[:user_id] }])
+      # user = User.find_by(id: params[:id])
+      if user
+          user.update(user_params)
+          render json: user, status: :accepted
+      else
+          render json: { error: "User not found" }, status: :not_found
+      end
   end
 
   def show
@@ -29,7 +41,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.permit(:username, :password, :password_confirmation)
+    params.permit(:username, :password, :bio, :profilePic, :password_confirmation)
   end
 
 end

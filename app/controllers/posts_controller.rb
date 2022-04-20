@@ -2,10 +2,9 @@ class PostsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :render_invalid
 
-  def index
+    def index
         posts = Post.all
         render json: posts, status: :ok
-
     end
 
     # def index
@@ -17,7 +16,6 @@ class PostsController < ApplicationController
         post = Post.where(["user_id = :u", { u: session[:user_id] }])
         render json: post
     end
-
 
     def show
         post = Post.find_by(id: params[:id])

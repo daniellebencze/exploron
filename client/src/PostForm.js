@@ -8,6 +8,7 @@ function PostForm({ user, destinations }) {
 
   const handlePost = (e) => {
     e.preventDefault();
+    // e.target.reset();
 
     fetch("/posts", {
       method: "POST",

@@ -16,21 +16,63 @@ function App() {
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [bio, setBio] = useState("");
+  const [profilePic, setProfilePic] = useState("");
+  const [profile, setProfile] = useState({});
+  const [journal, setJournal] = useState({});
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    // auto-login
-    fetch("/me").then((r) => {
+    fetch(`/me`).then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user));
+        r.json().then((user) => {
+          setJournal(user.journal);
+          setUser(user);
+        });
       }
     });
   }, []);
 
-  useEffect(() => {
-    fetch("/destinations")
+  function handleProfileUpdate(e) {
+    e.preventDefault();
+    fetch(`/users/${user.id}`, {
+      // fetch(`/me`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        username: username,
+        profilePic: profilePic,
+        bio: bio,
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
       .then((r) => r.json())
-      .then(setDestinations);
+      // .then((json) => console.log(json))
+      .then(setProfile);
+  }
+
+  useEffect(() => {
+    fetch("/destinations").then((r) => {
+      if (r.ok) {
+        r.json().then((data) => setDestinations(data));
+      }
+    });
   }, []);
+
+  function displayedDestinations() {
+    destinations.filter((destination) =>
+      destination.description.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+
+  // useEffect(() => {
+  //   fetch(`/journals`).then((r) => {
+  //     if (r.ok) {
+  //       r.json().then((journal) => setJournal(journal));
+  //     }
+  //   });
+  // }, []);
 
   return (
     <>
@@ -38,9 +80,8 @@ function App() {
       <div className="navbar">
         <span className="app-name">exploron</span>
         <span className="header-description">
-          A localized app to gain travel inspo, post memories to your digital
-          photo album, and journal ideas for future trips and upcoming
-          itineraries.
+          An app to gain travel inspo, post memories to your digital photo
+          album, and journal ideas for future trips and upcoming itineraries.
         </span>
       </div>
       <NavBar user={user} setUser={setUser} />
@@ -50,8 +91,14 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Homepage user={user} />} />
             <Route
-              path="/destinations"
-              element={<DestinationContainer destinations={destinations} />}
+              path="destinations"
+              element={
+                <DestinationContainer
+                  destinations={destinations}
+                  displayedDestinations={displayedDestinations}
+                  onSearch={setSearch}
+                />
+              }
             />
             <Route
               path="/posts"
@@ -59,7 +106,17 @@ function App() {
                 <PostContainer user={user} destinations={destinations} />
               }
             />
-            <Route path="/journal" element={<JournalContainer />} />
+            <Route
+              path="/journal"
+              element={
+                <JournalContainer
+                  user={user}
+                  journal={journal}
+                  setJournal={setJournal}
+                  // journalId={user.journal.id}
+                />
+              }
+            />
             <Route
               path="/me"
               element={
@@ -68,6 +125,13 @@ function App() {
                   setUser={setUser}
                   username={username}
                   setUsername={setUsername}
+                  bio={bio}
+                  setBio={setBio}
+                  profilePic={profilePic}
+                  setProfilePic={setProfilePic}
+                  profile={profile}
+                  setProfile={setProfile}
+                  handleProfileUpdate={handleProfileUpdate}
                 />
               }
             />
@@ -106,86 +170,3 @@ function App() {
 }
 
 export default App;
-
-// // import logo from "./logo.svg";
-// import "./App.css";
-// import React, { useState, useEffect } from "react";
-// import { Routes, Route } from "react-router-dom";
-// import NavBar from "./NavBar";
-// import Homepage from "./Homepage";
-// import DestinationContainer from "./DestinationContainer";
-// import PostContainer from "./PostContainer";
-// import JournalContainer from "./JournalContainer";
-// import SignUp from "./SignUp";
-// import Login from "./Login";
-
-// function App() {
-//   const [destinations, setDestinations] = useState([]);
-//   const [user, setUser] = useState(null);
-
-//   useEffect(() => {
-//     // auto-login
-//     fetch("/me").then((r) => {
-//       if (r.ok) {
-//         r.json().then((user) => setUser(user));
-//       }
-//     });
-//   }, []);
-
-//   useEffect(() => {
-//     fetch("/destinations")
-//       .then((r) => r.json())
-//       .then(setDestinations);
-//   }, []);
-
-//   return (
-//     <>
-//       <header className="header-image"></header>
-//       <div className="navbar">
-//         <span className="app-name">exploron</span>
-//         <span className="header-description">
-//           A localized app to gain travel inspo, post memories to your digital
-//           photo album, and journal ideas for future trips and upcoming
-//           iteneraries.
-//         </span>
-//       </div>
-//       <NavBar user={user} setUser={setUser} />
-//       <br />
-//       <main>
-//         <Routes>
-//           <Route path="/" element={<Homepage />} />
-//           <Route path="/signup" element={<SignUp />} />
-//           <Route path="/login" element={<Login setUser={setUser} />} />
-//           <Route
-//             path="/destinations"
-//             element={<DestinationContainer destinations={destinations} />}
-//           />
-//           <Route
-//             path="/posts"
-//             element={<PostContainer destinations={destinations} />}
-//           />
-//           <Route path="/journal" element={<JournalContainer />} />
-//         </Routes>
-//       </main>
-
-//       {/* <Routes>
-//         <Route path="/" element={<Homepage />} />
-//         <Route path="/signup" element={<SignUp />} />
-//         <Route path="/login" element={<Login setUser={setUser} />} />
-//         <Route
-//           path="/destinations"
-//           element={<DestinationContainer destinations={destinations} />}
-//         />
-//         <Route
-//           path="/posts"
-//           element={<PostContainer destinations={destinations} />}
-//         />
-//         <Route path="/journal" element={<JournalContainer />} />
-//       </Routes> */}
-//     </>
-//   );
-// }
-
-// export default App;
-
-// import logo from "./logo.svg";
