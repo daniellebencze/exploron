@@ -21,6 +21,7 @@ function App() {
   const [profile, setProfile] = useState({});
   const [journal, setJournal] = useState({});
   const [search, setSearch] = useState("");
+  const [state, setState] = useState("");
 
   useEffect(() => {
     fetch(`/me`).then((r) => {
@@ -60,11 +61,12 @@ function App() {
     });
   }, []);
 
-  function displayedDestinations() {
-    destinations.filter((destination) =>
-      destination.description.toLowerCase().includes(search.toLowerCase())
+  const searchDestinations = destinations.filter((destination) => {
+    return (
+      destination.state.toLowerCase().includes(search.toLowerCase()) ||
+      destination.name.toLowerCase().includes(search.toLowerCase())
     );
-  }
+  });
 
   return (
     <>
@@ -87,8 +89,10 @@ function App() {
               element={
                 <DestinationContainer
                   destinations={destinations}
-                  displayedDestinations={displayedDestinations}
+                  search={search}
+                  setSearch={setSearch}
                   onSearch={setSearch}
+                  searchDestinations={searchDestinations}
                 />
               }
             />
