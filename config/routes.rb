@@ -12,7 +12,12 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
-  patch "/me", to: "users#update"
+
+  # patch "/me", to: "users#update"
+  patch "/current_user_journal", to: "users#update"
+
+
+
   get "/current_user_post", to: "posts#current_user_post"
   get "/current_user_journal", to: "journals#current_user_journal"
 

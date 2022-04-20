@@ -4,6 +4,7 @@ import ProfileUpdateForm from "./ProfileUpdateForm";
 function UserProfile({
   user,
   username,
+  setUsername,
   bio,
   setBio,
   profilePic,
@@ -18,13 +19,15 @@ function UserProfile({
     //  setOther(journal.other);
   }, [user]);
 
-  console.log(user);
   return (
     <div>
+      <br />
+      <br />
       <span className="profile-form">
         <ProfileUpdateForm
           user={user}
           username={username}
+          setUsername={setUsername}
           bio={bio}
           setBio={setBio}
           profilePic={profilePic}
@@ -40,6 +43,7 @@ function UserProfile({
           alt={user.username}
         />
       </span>
+      <h2>{user.username}</h2>
       <span className="profile-bio">
         <h3>{user.bio}</h3>
       </span>

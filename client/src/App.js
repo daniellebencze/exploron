@@ -37,18 +37,18 @@ function App() {
     e.preventDefault();
     fetch(`/users/${user.id}`, {
       // fetch(`/me`, {
+      // fetch(`/current_user_id`, {
       method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
       body: JSON.stringify({
         username: username,
         profilePic: profilePic,
         bio: bio,
       }),
-      headers: {
-        "Content-type": "application/json",
-      },
     })
       .then((r) => r.json())
-      // .then((json) => console.log(json))
       .then(setProfile);
   }
 
@@ -65,14 +65,6 @@ function App() {
       destination.description.toLowerCase().includes(search.toLowerCase())
     );
   }
-
-  // useEffect(() => {
-  //   fetch(`/journals`).then((r) => {
-  //     if (r.ok) {
-  //       r.json().then((journal) => setJournal(journal));
-  //     }
-  //   });
-  // }, []);
 
   return (
     <>

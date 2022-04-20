@@ -4,12 +4,23 @@ function ProfileUpdateForm({
   user,
   setBio,
   setProfilePic,
+  setUsername,
   handleProfileUpdate,
 }) {
   return (
     <div>
       <form onSubmit={handleProfileUpdate}>
         <h2>Update Profile</h2>
+        <label>Username: </label>
+        <input
+          type="text"
+          name="username"
+          placeholder="Change your username"
+          defaultValue={user.username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <br />
+        <br />
         <label>Profile Pic: </label>
         <input
           type="img"

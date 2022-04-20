@@ -3,6 +3,7 @@ import React from "react";
 
 function Homepage({ user }) {
   if (user) {
+    console.log(user);
     return (
       <div>
         <h1>Welcome, {user.username}!</h1>

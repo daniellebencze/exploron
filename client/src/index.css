@@ -6,9 +6,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-image: radial-gradient(
-    rgba(255, 255, 156, 0.702),
-    white,
-    rgba(100, 208, 255, 0.52)
+    /* rgba(255, 255, 156, 0.702), */ white,
+    rgba(100, 208, 255, 0.52),
+    white
   );
 }
 
@@ -213,7 +213,7 @@ code {
   grid-template-columns: repeat(3, 1fr);
   gap: 5px;
   grid-auto-rows: minmax(100px, auto);
-  background-image: radial-gradient(white, rgb(255, 255, 156));
+  background-image: radial-gradient(white, rgb(255, 255, 156), white);
 }
 
 .post-cards {
@@ -224,7 +224,11 @@ code {
   gap: 5px;
   text-align: center;
   grid-auto-rows: minmax(175px, auto);
-  background-image: radial-gradient(white, rgb(255, 255, 156));
+  background-image: radial-gradient(
+    rgb(255, 255, 156),
+    white,
+    rgb(255, 255, 156)
+  );
 }
 
 .post-image {
@@ -253,5 +257,5 @@ code {
   /* text-align: center; */
   padding: 20px;
   background-image: radial-gradient(white, rgb(255, 255, 156));
-  margin-left: 23%;
+  margin-left: 25%;
 }

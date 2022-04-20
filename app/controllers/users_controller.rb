@@ -18,16 +18,18 @@ class UsersController < ApplicationController
     end
   end
 
+
   def update
-      user = User.where(["user_id = :u", { u: session[:user_id] }])
-      # user = User.find_by(id: params[:id])
+      # user = User.where(["id = :u", { u: session[:user_id] }])
+      user = User.find_by(id: session[:user_id])
       if user
           user.update(user_params)
           render json: user, status: :accepted
       else
-          render json: { error: "User not found" }, status: :not_found
+          render json: { error: "Journal not found" }, status: :not_found
       end
   end
+
 
   def show
     user = User.find_by(id: session[:user_id])
