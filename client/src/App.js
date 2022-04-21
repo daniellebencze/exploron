@@ -21,7 +21,7 @@ function App() {
   const [profile, setProfile] = useState({});
   const [journal, setJournal] = useState({});
   const [search, setSearch] = useState("");
-  const [state, setState] = useState("");
+  // const [state, setState] = useState("");
 
   useEffect(() => {
     fetch(`/me`).then((r) => {
