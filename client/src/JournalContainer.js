@@ -25,7 +25,7 @@ function JournalContainer({ user, id, journalId, journal, setJournal }) {
       }),
     })
       .then((r) => r.json())
-      // .then((json) => console.log(json))
+      .then((json) => console.log(json))
       .then(setJournal);
     // setWishlist("");
     // setItenerary("");
@@ -48,7 +48,7 @@ function JournalContainer({ user, id, journalId, journal, setJournal }) {
               defaultValue={wishlist}
               onChange={(e) => setWishlist(e.target.value)}
             />
-            <li className="journal-entry">{journal.wishlist}</li>
+            <li className="journal-entry">{wishlist}</li>
             <br />
 
             <label>Travel Itenerary </label>
@@ -62,7 +62,7 @@ function JournalContainer({ user, id, journalId, journal, setJournal }) {
             />
             <br className="journal-entry" />
 
-            <li className="journal-entry">{journal.itenerary}</li>
+            <li className="journal-entry">{itenerary}</li>
             <br />
             <label>Important Info </label>
             <input
@@ -73,7 +73,7 @@ function JournalContainer({ user, id, journalId, journal, setJournal }) {
               defaultValue={other}
               onChange={(e) => setOther(e.target.value)}
             />
-            <li className="final-journal-entry">{journal.other}</li>
+            <li className="final-journal-entry">{other}</li>
             <button type="submit" className="journal_button">
               Update Journal
             </button>
